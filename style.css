@@ -1,0 +1,114 @@
+  /* Reset básico */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+.indication {
+    margin-bottom: 40px;
+}
+
+    .card {
+      width: 320px;
+      height: 200px;
+      background-color: #1A1A2E; /* azul oscuro */
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      cursor: pointer;
+      color: #F0EDEE;
+      position: relative;
+      overflow: hidden;
+      transition: height 0.6s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .card.closed {
+      height: 120px;
+      justify-content: center;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 1.2px;
+      background-color: #FF6B6B; /* rojo vibrante */
+      color: #1A1A2E; /* texto azul oscuro */
+      box-shadow: 0 8px 15px rgba(255, 107, 107, 0.6);
+    }
+
+    .card.open {
+      height: 320px;
+      background-color: #4ECDC4; /* turquesa */
+      color: #1A1A2E; /* azul oscuro */
+      box-shadow: 0 12px 25px rgba(78, 205, 196, 0.7);
+      padding: 30px;
+      font-size: 1rem;
+      line-height: 1.5;
+      text-align: left;
+    }
+
+    .card .title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      user-select: none; /* evitar seleccionar el título al hacer clic */
+    }
+
+    .card .content {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 0.5s ease, max-height 0.5s ease;
+    }
+
+    .card.open .content {
+      opacity: 1;
+      max-height: 220px; /* altura fija para que se active el scroll si el contenido es mayor */
+      overflow-y: auto;
+      padding-right: 8px; /* espacio para scrollbar */
+    }
+
+    .corazon {
+        color: red;
+    }
+
+    /* Scrollbar personalizado para navegadores Webkit (Chrome, Safari) */
+    .card.open .content::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .card.open .content::-webkit-scrollbar-track {
+      background: #b2f7ef33;
+      border-radius: 3px;
+    }
+
+    .card.open .content::-webkit-scrollbar-thumb {
+      background-color: #1A1A2E;
+      border-radius: 3px;
+    }
+
+    /* Scrollbar para Firefox */
+    .card.open .content {
+      scrollbar-width: thin;
+      scrollbar-color: #1A1A2E #b2f7ef33;
+    }
+
+    /* Pequeña animación al hacer hover en cerrado */
+    .card.closed:hover {
+      box-shadow: 0 12px 25px rgba(255, 107, 107, 0.9);
+      transform: scale(1.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
